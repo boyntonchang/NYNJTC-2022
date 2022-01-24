@@ -1,38 +1,298 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Roboto:wght@100;300;400;500&display=swap');
+
+:root {
+  --main-green: rgb(16, 141, 16);
+  --light-blue: rgb(200, 230, 235);
+  --light-green: #c1d9c1;
+  --dark-green: rgb(2 76 2);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
+
+
+.trail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+
+}
+
+.trail a .trail--data-label {
+  padding: 10px;
+  border-bottom: thin solid var(--main-green);
+  color: var(--main-green);
+}
+
+.trail a:hover .trail--data-label {
+  background-color: var(--main-green);
+  color: #fff;
+}
+
+.header {
+  background-color: #fff;
+  height: 60px;
+  padding: 10px 1rem;
+  border-bottom: thin solid rgb(16, 141, 16);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.brand-logo {
+  width: auto;
+  height: 42px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 160px;
+  background-color: rgb(16, 141, 16);
+  color: #fff;
+  padding: 1rem;
+}
+
+.sidebar li {
+  list-style: none;
+
+
+}
+
+.sidebar>li:first-child {
+  margin-bottom: .4rem;
+}
+
+.sidebar li a {
+  background-color: transparent;
+  border-radius: 4px;
+
+
+}
+
+.sidebar li a.active {
+  background-color: var(--dark-green);
+
+
+
+}
+
+
+.sidebar li a:hover {
+  background-color: rgb(3, 87, 31);
+
+}
+
+.sidebar h3 {
+  font-size: 1rem;
+}
+
+.sidebar h3.no-list {
+  padding-left: .7rem;
+}
+
+.sidebar li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+.sidebar li ul li {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.container {
+  margin-top: 60px;
+  width: calc(100% - 160px);
+  margin-left: 160px;
+  padding: 1rem;
+
+}
+
+.main-home-container {
+  width: 100%;
+  background-image: url('./images/Catskills-feature-image.jpg');
+  height: 34rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-home-container .text-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: inherit;
+  padding: 0 5rem;
+}
+
+.main-home-container .text-wrapper h2 {
   color: white;
+  text-align: center;
+  font-size: 3.6rem;
+  font-weight: 100;
+  font-family: Roboto, sans-serif;
+  line-height: 1.3;
 }
 
-.App-link {
-  color: #61dafb;
+.main-home-container .text-wrapper p {
+  color: white;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 100;
+  line-height: 1.5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-field {
+  padding: 8px 10px;
+  border: thin solid darkgreen;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  border-radius: 4px;
+}
+
+.btn-primary {
+  border: thin solid var(--main-green);
+  background-color: var(--main-green);
+  color: #fff;
+  transition: background-color .5s linear;
+}
+
+.btn-outline-primary {
+  border: thin solid var(--main-green);
+  background-color: white;
+  color: var(--main-green);
+  transition: background-color .5s linear;
+}
+
+.btn-outline-primary:hover {
+
+  background-color: var(--main-green);
+  color: #fff;
+}
+
+.pill {
+  border-radius: 20px;
+  border: none;
+  margin-left: 1.5rem;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: bold;
+  padding: 4px 1rem;
+}
+
+.button-area {
+  padding-bottom: 1.4rem;
+}
+
+.main-title {
+  margin-bottom: 1rem;
+  color: white;
+  background-color: darkgreen;
+  padding: 8px 1rem;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.med-title {
+  padding: 10px;
+  color: darkgreen;
+  background-color: #c1d9c1;
+  margin-bottom: 0.6rem;
+}
+
+.geo-info,
+.measure-info {
+  margin-bottom: 1.4rem;
+  display: flex;
+  column-gap: 2rem;
+  color: var(--dark-green);
+}
+
+.geo-info label {
+  font-size: .8rem;
+}
+
+.info-area {
+  flex: 1;
+  padding: 1rem;
+  border: thin solid var(--main-green);
+  border-radius: 4px;
+}
+
+.overview-label{
+  margin-bottom: 2rem;
+}
+
+.main-label {
+  padding: 0;
+  font-size: 1.4rem;
+  color: darkgreen;
+  padding-bottom: 1rem;
+}
+
+.description {
+
+  margin-top: 1rem;
+
+
+  line-height: 1.6;
+  font-size: .9rem;
+
+}
+
+.ReactModal__Overlay{
+  top: 3rem !important;
+}
+
+.ReactModal__Content {
+  margin: auto;
+  max-width: 70%;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.account img {
+  border-radius: 50%;
+  width: 36px;
+  margin-right: 1rem;
+}
+
+.account h2 {
+
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin-right: 1rem;
 }
