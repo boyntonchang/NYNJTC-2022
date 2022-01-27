@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext} from "react";
 import { useParams, Link } from "react-router-dom";
+import { TrailDataContext } from "../context/GlobalContext";
 
-const ParkArea = ({ trails }) => {
-  //let { name } = useParams();
+const ParkArea = () => {
+
   let { park } = useParams();
-
+const trails = useContext(TrailDataContext);
   const newTrail = trails.filter((trail) => trail.Park === park);
 
 

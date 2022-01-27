@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { TrailDataContext } from "../context/GlobalContext";
 
 const Title = ({ trail  }) => {
+
+  
   return (
     <Link to={`/title/${trail.Title}`}>
       <h4 key={trail.id} className="trail--data-label">

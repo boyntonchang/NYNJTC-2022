@@ -1,11 +1,12 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { TrailDataContext } from "../context/GlobalContext";
 
-const Difficulty = ({ trails}) => {
+const Difficulty = () => {
 
   const initialState = 'Easy'
   const [difficulty, setDifficulty] = useState(initialState);
-
+  const trails = useContext(TrailDataContext);
   const newDifficulty = trails.map((trail) => trail.Difficulty);
   const sortedDifficulty = newDifficulty.filter(
     (item, index) => newDifficulty.indexOf(item) === index

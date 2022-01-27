@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext} from "react";
 import { Link } from "react-router-dom";
+import { TrailDataContext } from "../context/GlobalContext";
 
-const Park = ({ trails }) => {
+const Park = () => {
+
+  const trails = useContext(TrailDataContext);
   const newPark = trails.map((trail) => trail.Park);
   const sortedPark = newPark.filter(
     (item, index) => newPark.indexOf(item) === index

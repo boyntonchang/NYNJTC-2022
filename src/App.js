@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useContext } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -10,11 +10,11 @@ import Difficulty from "./components/Difficulty";
 import Park from "./components/Park";
 import NYNJTC from "./components/NYNJTC";
 import MyTrails from "./components/MyTrails";
-import axios from "axios";
 import TrailDetail from "./components/TrailDetail";
 import RegionArea from "./components/RegionArea";
 import ParkArea from "./components/ParkArea";
-import { TrailDataContext, GolbalContextProvider} from './context/GlobalContext'
+import Donate from "./components/Donate";
+import { GolbalContextProvider} from './context/GlobalContext'
 
 
 function App() {
@@ -23,58 +23,63 @@ function App() {
 
   const navigate = useNavigate();
 
-
   const [myTrails, setMyTrails] = useState([]);
+  
 
-  function saveTrails(newTrail) {
-   console.log('trigger');
-    setMyTrails(() => {
-      myTrails.push(newTrail);
-
-      return { myTrails };
+  const [selectedTrail, setSelectedTrail] = useState(false);
+  
+  function saveTrails(trail) {
+    setMyTrails((myTrails) => {
+      return [...myTrails, trail ];
     });
-
-    console.log("trail", myTrails);
-    localStorage.setItem("myData", myTrails);
   }
 
-  useMemo(() => {
-    setIsLoading(true)
-    axios
-      .get("../../trailData.json")
-      .then((res) => setTrails(res.data))
-      .finally(() => setIsLoading(false));
-      
-  }, [axios, setTrails]);
-console.log(trails);
+   function deleteTrail(newTrail) {
+     const updatedTrails = myTrails.filter((item) => item.id !== newTrail.id);
+     setMyTrails(updatedTrails)
+     setSelectedTrail(false);
+     console.log('updated trail', updatedTrails);
+   }
+
+ 
+
   return (
     <div className="trail">
       <Header />
-      <Sidebar />
+      <Sidebar myTrails={myTrails} />
       {isLoading && <p>Loading...</p>}
-      {!isLoading && (
-        <div className="container">
-          
+      <GolbalContextProvider value={trails}>
+        {!isLoading && (
+          <div className="container">
             <Routes navigate={navigate}>
               <Route path="/" element={<Home />} />
-              <Route path="/region" element={<Region trails={trails} />} />
-              <Route
-                path="/region/:region"
-                element={<RegionArea trails={trails} />}
-              />
+              <Route path="/region" element={<Region />} />
+              <Route path="/region/:region" element={<RegionArea />} />
               <Route
                 path="/region/:region/:name"
                 element={
-                  <TrailDetail trails={trails} addMyTrail={saveTrails} />
+                  <TrailDetail
+                    addMyTrail={saveTrails}
+                    myTrails={myTrails}
+                    deleteTrail={deleteTrail}
+                    selectedTrail={selectedTrail}
+                    setSelectedTrail={setSelectedTrail}
+                  />
                 }
               />
-              <Route
-                path="/title"
-                element={<TrailTitleList trails={trails} />}
-              ></Route>
+              <Route path="/title" element={<TrailTitleList />} />
               <Route
                 path="/title/:name"
-                element={<TrailDetail trails={trails} />}
+                element={
+                  <TrailDetail
+                    trails={trails}
+                    addMyTrail={saveTrails}
+                    myTrails={myTrails}
+                    deleteTrail={deleteTrail}
+                    selectedTrail={selectedTrail}
+                    setSelectedTrail={setSelectedTrail}
+                  />
+                }
               />
               <Route
                 path="/difficulty"
@@ -82,7 +87,16 @@ console.log(trails);
               />
               <Route
                 path="/difficulty/:name"
-                element={<TrailDetail trails={trails} />}
+                element={
+                  <TrailDetail
+                    trails={trails}
+                    addMyTrail={saveTrails}
+                    myTrails={myTrails}
+                    deleteTrail={deleteTrail}
+                    selectedTrail={selectedTrail}
+                    setSelectedTrail={setSelectedTrail}
+                  />
+                }
               />
               <Route path="/park" element={<Park trails={trails} />} />
               <Route
@@ -91,17 +105,39 @@ console.log(trails);
               />
               <Route
                 path="/park/:park/:name"
-                element={<TrailDetail trails={trails} />}
+                element={
+                  <TrailDetail
+                    trails={trails}
+                    addMyTrail={saveTrails}
+                    myTrails={myTrails}
+                    deleteTrail={deleteTrail}
+                    selectedTrail={selectedTrail}
+                    setSelectedTrail={setSelectedTrail}
+                  />
+                }
               />
-              <Route path="/nynjtc" element={<NYNJTC />} />
+              {/* <Route path="/nynjtc" element={<NYNJTC />} /> */}
+              <Route path="/donate" element={<Donate />} />
               <Route
                 path="/mytrails"
                 element={<MyTrails myTrails={myTrails} />}
               />
+              <Route
+                path="/mytrails/:name"
+                element={
+                  <TrailDetail
+                    addMyTrail={saveTrails}
+                    myTrails={myTrails}
+                    deleteTrail={deleteTrail}
+                    selectedTrail={selectedTrail}
+                    setSelectedTrail={setSelectedTrail}
+                  />
+                }
+              />
             </Routes>
-          
-        </div>
-      )}
+          </div>
+        )}
+      </GolbalContextProvider>
     </div>
   );
 }

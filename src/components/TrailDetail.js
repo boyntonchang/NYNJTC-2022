@@ -1,23 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal/lib/components/Modal';
 import MapContainer from "./MapContainer";
+import { TrailDataContext } from "../context/GlobalContext";
+
+
 
 Modal.setAppElement('#root')
-const TrailDetail = ({ trails, saveTrails }) => {
+const TrailDetail = ({
+  addMyTrail,
+  myTrails,
+  deleteTrail,
+  selectedTrail,
+  setSelectedTrail,
+}) => {
   let { name } = useParams();
-
+  const trails = useContext(TrailDataContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const newTrail = trails.find((trail) => trail.Title === name);
+  // const [selectedTrail, setSelectedTrail] = useState(false);
 
+  const newTrail = trails.find((trail) => trail.Title === name);
+ //setSelectedTrail(false);
+ setSelectedTrail(myTrails.some((value) => value === newTrail));
+  // useEffect(()=>{
+  //   setSelectedTrail(myTrails.some((value) => value === newTrail));
+  //   console.log(myTrails.some((value) => value === newTrail));
+  // },[])
+
+  console.log(selectedTrail);
   return (
     <>
       <h3 className="main-label">
         {newTrail.Title}
-        <button className="btn pill" onClick={saveTrails}>
-          Save for my trails
-        </button>
+
+        {selectedTrail ? (
+          <>
+            <button
+              className="btn pill selected-pill"
+              onClick={() => deleteTrail(newTrail)}
+            >
+              Delete from my trail
+            </button>
+            <span>My saved trail!</span>
+          </>
+        ) : (
+          <button className="btn pill" onClick={() => addMyTrail(newTrail)}>
+            Save for my trails
+          </button>
+        )}
       </h3>
       <div className="geo-info">
         <div className="info-area">

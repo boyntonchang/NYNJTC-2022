@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link , NavLink} from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = ({ myTrails }) => {
   return (
     <>
       <ul className="sidebar">
@@ -55,15 +55,15 @@ const Sidebar = () => {
             to="/mytrails"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
-            <h3>My Trails</h3>
+            <h3>My Trails <span className='badge'>{myTrails.length}</span></h3>
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/nynjtc"
+            to="/donate"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
-            <h3>About</h3>
+            <h3>Donate</h3>
           </NavLink>
         </li>
       </ul>

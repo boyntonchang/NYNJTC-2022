@@ -1,10 +1,13 @@
-import React,  { useState } from 'react'
+import React,  { useState, useContext } from 'react'
 import Title from './Title'
+import { TrailDataContext } from "../context/GlobalContext";
 
-const TrailTitleList = ({trails}) => {
+const TrailTitleList = () => {
 
     const [ search, setSearch] = useState('')
-
+    
+    const trails = useContext(TrailDataContext);
+    
     const handleChange = (e) =>{
         setSearch(e.target.value)
     }

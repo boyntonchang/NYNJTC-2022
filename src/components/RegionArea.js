@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext} from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { TrailDataContext } from "../context/GlobalContext";
 
-const RegionArea = ({ trails}) => {
+const RegionArea = () => {
 
     //let { name } = useParams();
     let { region } = useParams();
 
-
+const trails = useContext(TrailDataContext);
 
     const newTrail = trails.filter((trail) => trail.Region === region);
 

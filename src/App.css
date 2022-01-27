@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Roboto:wght@100;300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Roboto:wght@100;300;400;500&display=swap");
 
 :root {
   --main-green: rgb(16, 141, 16);
@@ -11,27 +11,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 a {
   text-decoration: none;
 }
 
-
-
 .trail {
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
 }
 
 .trail a .trail--data-label {
   padding: 10px;
   border-bottom: thin solid var(--main-green);
   color: var(--main-green);
+  display: flex;
+  justify-content: space-between;
 }
 
 .trail a:hover .trail--data-label {
@@ -71,32 +70,23 @@ a {
 
 .sidebar li {
   list-style: none;
-
-
 }
 
-.sidebar>li:first-child {
-  margin-bottom: .4rem;
+.sidebar > li:first-child {
+  margin-bottom: 0.4rem;
 }
 
 .sidebar li a {
   background-color: transparent;
   border-radius: 4px;
-
-
 }
 
 .sidebar li a.active {
   background-color: var(--dark-green);
-
-
-
 }
-
 
 .sidebar li a:hover {
   background-color: rgb(3, 87, 31);
-
 }
 
 .sidebar h3 {
@@ -104,7 +94,7 @@ a {
 }
 
 .sidebar h3.no-list {
-  padding-left: .7rem;
+  padding-left: 0.7rem;
 }
 
 .sidebar li a {
@@ -124,12 +114,11 @@ a {
   width: calc(100% - 160px);
   margin-left: 160px;
   padding: 1rem;
-
 }
 
 .main-home-container {
   width: 100%;
-  background-image: url('./images/Catskills-feature-image.jpg');
+  background-image: url("./images/Catskills-feature-image.jpg");
   height: 34rem;
   background-repeat: no-repeat;
   background-size: cover;
@@ -182,18 +171,17 @@ a {
   border: thin solid var(--main-green);
   background-color: var(--main-green);
   color: #fff;
-  transition: background-color .5s linear;
+  transition: background-color 0.5s linear;
 }
 
 .btn-outline-primary {
   border: thin solid var(--main-green);
   background-color: white;
   color: var(--main-green);
-  transition: background-color .5s linear;
+  transition: background-color 0.5s linear;
 }
 
 .btn-outline-primary:hover {
-
   background-color: var(--main-green);
   color: #fff;
 }
@@ -238,7 +226,7 @@ a {
 }
 
 .geo-info label {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .info-area {
@@ -248,7 +236,7 @@ a {
   border-radius: 4px;
 }
 
-.overview-label{
+.overview-label {
   margin-bottom: 2rem;
 }
 
@@ -260,16 +248,13 @@ a {
 }
 
 .description {
-
   margin-top: 1rem;
 
-
   line-height: 1.6;
-  font-size: .9rem;
-
+  font-size: 0.9rem;
 }
 
-.ReactModal__Overlay{
+.ReactModal__Overlay {
   top: 3rem !important;
 }
 
@@ -291,8 +276,118 @@ a {
 }
 
 .account h2 {
-
   font-size: 1rem;
   text-transform: capitalize;
   margin-right: 1rem;
+}
+
+.wrapper {
+}
+.wrapper .total span {
+  margin-left: 1rem;
+  border: thin solid var(--dark-green);
+  min-width: 170px;
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.CTA-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin-top: 1rem;
+ 
+}
+
+.CTA-wrapper > * {
+  grid-column-start: 3;
+ 
+}
+.CTA-wrapper .btn {
+  margin-right: 0;
+}
+
+.input-amount{
+  border: thin solid var(--main-green);
+    border-radius: 4px;
+    padding: 0.5rem 1.5rem;
+    display: inline-block;
+}
+
+.form-container {
+  max-width: 768px;
+}
+
+.radioArea {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+
+
+.radioArea input[type="radio"] {
+  appearance: none; 
+}
+
+.radioArea input[type="radio"] ~ label {
+  color: var(--dark-green);
+  background-color: transparent;
+  border: thin solid var(--main-green);
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+
+.radioArea input[type="radio"] ~ label:hover {
+  background-color: var(--light-green);
+}
+
+.radioArea input[type="radio"]:checked ~ label {
+  background-color: var(--dark-green);
+  color: white;
+  border-color: var(--dark-green);
+}
+
+.premium.disabled{
+  opacity: .5;
+  pointer-events: none;
+}
+
+.section-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.form-control{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-control label{
+  font-size: 0.9rem;
+  padding-bottom: 6px;
+}
+.badge{
+    border-radius: 50%;
+    background: #e9c02d;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    color: darkgreen;
+    text-align: center;
+    margin-left: 0.3rem;
+    padding-right: 2px;
+
+}
+
+.selected-pill{
+  background-color: #e9c02d;
+  color:var(--dark-green)
 }
