@@ -1,12 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Modal from 'react-modal/lib/components/Modal';
+import React, { useState, useContext, useEffect, useMemo } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import Modal from "react-modal/lib/components/Modal";
 import MapContainer from "./MapContainer";
 import { TrailDataContext } from "../context/GlobalContext";
+import { FaHiking } from "react-icons/fa";
 
-
-
-Modal.setAppElement('#root')
+Modal.setAppElement("#root");
 const TrailDetail = ({
   addMyTrail,
   myTrails,
@@ -18,15 +17,11 @@ const TrailDetail = ({
   const trails = useContext(TrailDataContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // const [selectedTrail, setSelectedTrail] = useState(false);
+ 
 
   const newTrail = trails.find((trail) => trail.Title === name);
- //setSelectedTrail(false);
- setSelectedTrail(myTrails.some((value) => value === newTrail));
-  // useEffect(()=>{
-  //   setSelectedTrail(myTrails.some((value) => value === newTrail));
-  //   console.log(myTrails.some((value) => value === newTrail));
-  // },[])
+
+  setSelectedTrail(myTrails.some((value) => value === newTrail));
 
   console.log(selectedTrail);
   return (
@@ -42,7 +37,10 @@ const TrailDetail = ({
             >
               Delete from my trail
             </button>
-            <span>My saved trail!</span>
+            <span className="rect-badge">
+              <FaHiking className="badge-icon" />
+              My saved trail!
+            </span>
           </>
         ) : (
           <button className="btn pill" onClick={() => addMyTrail(newTrail)}>

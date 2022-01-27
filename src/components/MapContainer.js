@@ -10,8 +10,7 @@ const MapContainer = ({trail}) => {
     };
 
     const locationValue = trail.GPS.split(",").map((item) => +item); 
-    // console.log(locationValue);
-    //const { lat, lng } = locationValue;
+
   return (
     <LoadScript googleMapsApiKey="AIzaSyAIchOFiGdGwJ-xQnD3d-GK5CURm_Wn1NA">
       <GoogleMap

@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import { Routes, Route, useParams, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import Region from "./components/Region";
 import TrailTitleList from "./components/TrailTitleList";
@@ -18,7 +18,7 @@ import { GolbalContextProvider} from './context/GlobalContext'
 
 
 function App() {
-  const [trails, setTrails] = useState([]);
+ const [trails, setTrails] = useState([]);
   const [isLoading, setIsLoading ] = useState(false)
 
   const navigate = useNavigate();

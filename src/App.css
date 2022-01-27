@@ -391,3 +391,16 @@ a {
   background-color: #e9c02d;
   color:var(--dark-green)
 }
+
+.rect-badge{
+  font-size: 14px;
+  border: thin solid var(--light-green);
+  border-radius: 4px;
+  padding: 4px 1rem;
+  background-color: var(--light-green);
+  white-space: nowrap;
+}
+
+.rect-badge .badge-icon{
+  margin-right: 10px;
+}
