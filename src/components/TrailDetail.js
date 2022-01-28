@@ -6,15 +6,18 @@ import { TrailDataContext } from "../context/GlobalContext";
 import { FaHiking } from "react-icons/fa";
 
 Modal.setAppElement("#root");
-const TrailDetail = ({
-  addMyTrail,
-  myTrails,
-  deleteTrail,
-  selectedTrail,
-  setSelectedTrail,
-}) => {
-  let { name } = useParams();
-  const trails = useContext(TrailDataContext);
+const TrailDetail = () => {
+  let { name } =
+    useParams();
+  const {
+    trails,
+    deleteTrail,
+    selectedTrail,
+    setSelectedTrail,
+    saveTrails,
+    myTrails,
+    setMyTrails,
+  } = useContext(TrailDataContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
  
@@ -43,7 +46,7 @@ const TrailDetail = ({
             </span>
           </>
         ) : (
-          <button className="btn pill" onClick={() => addMyTrail(newTrail)}>
+          <button className="btn pill" onClick={() => saveTrails(newTrail)}>
             Save for my trails
           </button>
         )}

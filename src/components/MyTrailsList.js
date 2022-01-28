@@ -1,14 +1,10 @@
 import React, { useContext, useState } from "react";
-//import { TrailDataContext } from "../context/GlobalContext";
+import { TrailDataContext } from "../context/GlobalContext";
 import { Link, useParams } from "react-router-dom";
 
-const MyTrailsList = ({ myTrails, selectedTrail }) => {
-  //console.log("MyTrailsList", myTrails);
-
-  //const trails = useContext(TrailDataContext);
-
-  //console.log(myTrails);
-
+const MyTrailsList = () => {
+ 
+const { myTrails } = useContext(TrailDataContext);
   return (
     <>
       <h2 className="main-title">MY trails</h2>
@@ -18,7 +14,7 @@ const MyTrailsList = ({ myTrails, selectedTrail }) => {
           return (
             <>
               <Link to={`/myTrails/${trail.Title}`} key={trail.id}>
-                <h4 className="trail--data-label" selectedTrail={selectedTrail} >
+                <h4 className="trail--data-label"  >
                   {trail.Title}
                 </h4>
               </Link>

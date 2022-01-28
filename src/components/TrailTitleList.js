@@ -6,7 +6,7 @@ const TrailTitleList = () => {
 
     const [ search, setSearch] = useState('')
     
-    const trails = useContext(TrailDataContext);
+    const {trails} = useContext(TrailDataContext);
     
     const handleChange = (e) =>{
         setSearch(e.target.value)

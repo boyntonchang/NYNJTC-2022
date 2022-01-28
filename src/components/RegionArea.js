@@ -4,14 +4,13 @@ import { TrailDataContext } from "../context/GlobalContext";
 
 const RegionArea = () => {
 
-    //let { name } = useParams();
     let { region } = useParams();
 
-const trails = useContext(TrailDataContext);
+const {trails} = useContext(TrailDataContext);
 
     const newTrail = trails.filter((trail) => trail.Region === region);
 
-    // console.log(newTrail);
+
   return (
     <>
       <h4 className="med-title">{region}</h4>

@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link , NavLink} from 'react-router-dom';
-
-const Sidebar = ({ myTrails }) => {
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { TrailDataContext } from "../context/GlobalContext";
+const Sidebar = () => {
+  const { myTrails } = useContext(TrailDataContext);
   return (
     <>
       <ul className="sidebar">
@@ -55,7 +56,9 @@ const Sidebar = ({ myTrails }) => {
             to="/mytrails"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
-            <h3>My Trails <span className='badge'>{myTrails.length}</span></h3>
+            <h3>
+              My Trails <span className="badge">{myTrails.length}</span>
+            </h3>
           </NavLink>
         </li>
         <li>

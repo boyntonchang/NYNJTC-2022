@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import MyTrailsList from './MyTrailsList';
 
-const MyTrails = ({ myTrails, selectedTrail }) => {
+
+const MyTrails = () => {
   const { isAuthenticated } = useAuth0();
-  //console.log('trail2', myTrails);
   return isAuthenticated ? (
-    <MyTrailsList myTrails={myTrails} selectedTrail={selectedTrail} />
+    <MyTrailsList  />
   ) : (
     <div>Please log in first</div>
   );

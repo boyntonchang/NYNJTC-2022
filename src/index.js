@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { GolbalContextProvider } from './context/GlobalContext'
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +14,9 @@ ReactDOM.render(
       redirectUri={window.location.origin}
     >
       <BrowserRouter>
-        <App />
+        <GolbalContextProvider>
+          <App />
+        </GolbalContextProvider>
       </BrowserRouter>
     </Auth0Provider>
   </React.StrictMode>,

@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { TrailDataContext } from "../context/GlobalContext";
 
 const Region = () => {
-  const trails = useContext(TrailDataContext);
+  const {trails} = useContext(TrailDataContext);
 
   const newRegion = trails.map((trail) => trail.Region);
   const sortedRegion = newRegion.filter(

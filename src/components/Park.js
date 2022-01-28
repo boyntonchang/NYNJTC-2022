@@ -4,7 +4,7 @@ import { TrailDataContext } from "../context/GlobalContext";
 
 const Park = () => {
 
-  const trails = useContext(TrailDataContext);
+  const {trails} = useContext(TrailDataContext);
   const newPark = trails.map((trail) => trail.Park);
   const sortedPark = newPark.filter(
     (item, index) => newPark.indexOf(item) === index
