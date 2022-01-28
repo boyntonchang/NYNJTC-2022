@@ -229,6 +229,12 @@ a {
   font-size: 0.8rem;
 }
 
+.column-area{
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
 .info-area {
   flex: 1;
   padding: 1rem;

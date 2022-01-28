@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
 import Modal from "react-modal/lib/components/Modal";
 import MapContainer from "./MapContainer";
 import { TrailDataContext } from "../context/GlobalContext";
@@ -7,8 +7,7 @@ import { FaHiking } from "react-icons/fa";
 
 Modal.setAppElement("#root");
 const TrailDetail = () => {
-  let { name } =
-    useParams();
+  let { name } = useParams();
   const {
     trails,
     deleteTrail,
@@ -16,14 +15,12 @@ const TrailDetail = () => {
     setSelectedTrail,
     saveTrails,
     myTrails,
-    setMyTrails,
+    
   } = useContext(TrailDataContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
- 
-
   const newTrail = trails.find((trail) => trail.Title === name);
-
+  //console.log(newTrail.Title);
   setSelectedTrail(myTrails.some((value) => value === newTrail));
 
   console.log(selectedTrail);

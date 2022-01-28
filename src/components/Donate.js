@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Donate = () => {
@@ -12,6 +13,8 @@ const Donate = () => {
     state: "",
     zipCode: "",
   };
+
+  const navigate = useNavigate()
 
 
 
@@ -69,6 +72,7 @@ const Donate = () => {
   function submitData(e) {
     e.preventDefault();
     console.log(formData);
+    navigate("../donateinfo", { state: formData });
   
   }
   return (

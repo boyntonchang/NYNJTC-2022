@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TrailDataContext } from "../context/GlobalContext";
 
 const Region = () => {
@@ -10,7 +10,7 @@ const Region = () => {
     (item, index) => newRegion.indexOf(item) === index
   );
 
-  let { regionName } = useParams();
+ 
   return (
     <>
       <h2 className="main-title">Search by Region</h2>

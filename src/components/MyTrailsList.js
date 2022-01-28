@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { TrailDataContext } from "../context/GlobalContext";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MyTrailsList = () => {
  
@@ -9,18 +9,18 @@ const { myTrails } = useContext(TrailDataContext);
     <>
       <h2 className="main-title">MY trails</h2>
 
-      {myTrails.length > 0 &&
-        myTrails.map((trail, id) => {
+      {myTrails.length > 0 ?
+        myTrails.map((trail) => {
           return (
             <>
               <Link to={`/myTrails/${trail.Title}`} key={trail.id}>
-                <h4 className="trail--data-label"  >
+                <h4 className="trail--data-label" key={trail.id}>
                   {trail.Title}
                 </h4>
               </Link>
             </>
           );
-        })}
+        }) : <h4>No trail is saved.</h4>}
     </>
   );
 };
